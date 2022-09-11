@@ -120,7 +120,10 @@ app.post("/movies", (req, res) => {
  *      Test route: /logo.png
  */
 // Your code here
+app.use(express.static("public"));
 
+// app.get("/logo.png", (req, res) => {});
 // DO NOT EDIT - Set port and listener
+
 const port = 5000;
 app.listen(port, () => console.log("Server is listening on port", port));
