@@ -1,5 +1,5 @@
 // DO NOT EDIT - Initialize Express, handle JSON requests
-const express = require('express');
+const express = require("express");
 const app = express();
 
 app.use(express.json());
@@ -11,7 +11,9 @@ app.use(express.json());
  *     Response: 1.0.0
  */
 // Your code here
-
+app.get("/version", (req, res) => {
+	res.send("1.0.0");
+});
 /**
  *  Basic Phase 2 - Route param and JSON response
  *      Method: GET
@@ -24,7 +26,14 @@ app.use(express.json());
  *  combined with the id sent as a route parameter in the url
  */
 // Your code here
-
+app.get("/viewers/:id", (req, res) => {
+	const user = {
+		id: req.params.id,
+		name: "ahmed maher",
+		birthDate: "24/8/1998",
+	};
+	res.json(user);
+});
 /** Basic Phase 3 - Query params in URL
  *      Method: GET
  *      Route: /info
@@ -43,7 +52,14 @@ app.use(express.json());
  *          message required
  */
 // Your code here
-
+app.get("/info", (req, res) => {
+	const message = req.query.message;
+	if (message) {
+		res.send(message);
+	} else {
+		res.send("message required");
+	}
+});
 /**
  *  IMPORTANT: Scroll to the top for basic phases.
  *
@@ -97,4 +113,4 @@ app.use(express.json());
 
 // DO NOT EDIT - Set port and listener
 const port = 5000;
-app.listen(port, () => console.log('Server is listening on port', port));
+app.listen(port, () => console.log("Server is listening on port", port));
