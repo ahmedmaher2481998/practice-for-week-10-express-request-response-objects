@@ -93,7 +93,17 @@ app.get("/info", (req, res) => {
  *          {"id":98765432,"name":"Honey Sweet","year":1967,"isFavorite":false}
  */
 // Your code here
-
+app.post("/movies", (req, res) => {
+	const isFavorite = req.body.favorite ? true : false;
+	const { year, name } = req.body;
+	const movie = {
+		id: Math.floor(Math.random() * 1000000),
+		name,
+		year,
+		isFavorite,
+	};
+	res.status(200).json(movie);
+});
 /**
  *  Advanced Bonus Phase B - Research how to return static
  *                           files in a public folder
